@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "yarn build && node dist/index.js",
+    "build": "tsc -w",
+    "dev": "nodemon dist/index.js",
     "start:dev": "ts-node-dev 'src/index.ts'",
     "lint": "eslint ./src/ --ext .ts",
     "lint:fix": "eslint ./src/ --ext .ts --fix",
@@ -36,8 +36,17 @@
   },
   "dependencies": {
     "@overnightjs/core": "^1.7.5",
+    "@types/cors": "^2.8.10",
+    "@types/morgan": "^1.9.2",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "module-alias": "^2.2.2"
+    "knex": "^0.95.2",
+    "module-alias": "^2.2.2",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+    "objection": "^2.2.14",
+    "promise-mysql": "^5.0.3"
   }
 }
