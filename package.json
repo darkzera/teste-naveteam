@@ -6,6 +6,10 @@
   "scripts": {
     "build": "tsc -w",
     "dev": "nodemon dist/index.js",
+    "make:migration": "knex migrate:make migration_name",
+    "migrate": "knex migrate:lastest",
+    "make:seed": "knex seed:make seed_name",
+    "seeding": "knex seed:run",
     "start:dev": "ts-node-dev 'src/index.ts'",
     "lint": "eslint ./src/ --ext .ts",
     "lint:fix": "eslint ./src/ --ext .ts --fix",

@@ -5,9 +5,9 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { Model } from "objection";
 
-import knexConfig from './database';
+// import knexConfig from './database';
+import knexConfig from "../knexfile"
 import Knex, { knex } from 'knex';
-import Project from './models/projects';
 import { Application } from 'express';
 
 import { ProjectController } from './controllers/projectsController'
@@ -17,8 +17,8 @@ import { knexPool } from './config/knex';
 
 
 export class SetupServer extends Server {
-    // public knex = Knex(knexConfig.development);
 
+    public knex = Knex(knexConfig.development);
     constructor() {
         super(process.env.NODE_ENV === 'development');
     }
@@ -33,12 +33,12 @@ export class SetupServer extends Server {
 
     public getApp(): Application {
         return this.app;
-      }
+    }
 
     private setupExpress(): void {
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(bodyParser.json());
-        this.app.use(bodyParser.urlencoded({extended: true}));
+        this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(morgan('dev'));
         this.app.use(cors());
     }
@@ -48,12 +48,12 @@ export class SetupServer extends Server {
         const naversController = new NaversController();
         this.addControllers([
             projectController,
-            naversController 
+            naversController
         ])
     }
 
     private async knexSetup(): Promise<void> {
-        Model.knex(knexPool)
+        Model.knex(knex)
     }
 
     start(): void {
