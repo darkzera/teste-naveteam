@@ -12,7 +12,6 @@ import { Application } from 'express';
 
 import { ProjectController } from './controllers/projectsController'
 import { NaversController } from './controllers/naversController';
-import { knexPool } from './config/knex';
 
 
 
