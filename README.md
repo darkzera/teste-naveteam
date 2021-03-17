@@ -23,7 +23,7 @@ Database setup
 Load this .SQL to create database. Knex cannot create it by himself
 ```bash
 $ mysql < createDefault.sql 
-$ yarn dev
+$ yarn build && dev
 ```
 ### Erase or refill database with "fake data" - migrate/seed
 ```bash
